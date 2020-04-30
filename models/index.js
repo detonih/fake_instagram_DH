@@ -1,4 +1,20 @@
-"use strict";
+const config = require('../configs/database')
+const { Sequelize, DataTypes } = require('sequelize')
+const sequelize = new Sequelize(config)
+
+const User = require('./User')(sequelize, DataTypes)
+const Publication = require('./Publication')(sequelize, DataTypes)
+
+module.exports = {
+  sequelize,
+  User,
+  Publication
+}
+
+
+
+
+/* "use strict";
 
 const fs = require("fs");
 const path = require("path");
@@ -41,3 +57,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+ */
